@@ -17,7 +17,7 @@ module.exports = function(app, express) {
         dumpExceptions: true,
         showStack: true
     }));
-    db.createDBForDevelopment();
+    db.createDBForProduction();
   });
   
   app.configure('production', function() {
