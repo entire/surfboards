@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 // load configuration
-require('./config/environment')(app, express);
+require('./config/config')(app, express);
 
 // load controllers
 require('./lib/load')(app);

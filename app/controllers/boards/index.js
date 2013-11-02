@@ -87,7 +87,7 @@ module.exports = function(app) {
 	});
 
 	// delete board
-	app.del('/boards', function(req, res) {
+	app.del('/boards/:id', function(req, res) {
 		var id = req.params.id-1;
 		boards.remove(id, function(err, results) {
 			if (err) {

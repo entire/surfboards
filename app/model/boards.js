@@ -1,5 +1,4 @@
-var mongoskin = require('mongoskin');
-var db = mongoskin.db('mongodb://kosvke:rashomon1@ds053438.mongolab.com:53438/boards', {safe:false});
+var db = require('./db').getCurrentDB();
 
 module.exports = {
   all: function(callback) {

@@ -1,3 +1,5 @@
+var db = require('../model/db');
+
 module.exports = function(app, express) {
 		
 	app.use(express.logger('tiny'));
@@ -15,9 +17,11 @@ module.exports = function(app, express) {
         dumpExceptions: true,
         showStack: true
     }));
+    db.createDBForDevelopment();
   });
   
   app.configure('production', function() {
     app.use(express.errorHandler());
+    db.createDBForProduction();
   });
 };
