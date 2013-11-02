@@ -38,11 +38,13 @@ module.exports = function(app) {
 				throw err;
 			} else {
 				var boardcount = {
-				board_type: "surfboard",
-				count: count
+					board_type: "surfboard",
+					count: count
 				};
 				
 				res.json(boardcount);
+				res.statusCode = 200;
+
 			}
 		});
 	});

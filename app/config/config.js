@@ -13,14 +13,16 @@ module.exports = function(app, express) {
 	app.use(app.router);
 
  	app.configure('development', function() {
+    console.log('setting up for development!');
     app.use(express.errorHandler({
         dumpExceptions: true,
-        showStack: true
+        showStack: true,
     }));
-    db.createDBForProduction();
+    db.createDBForDevelopment();
   });
   
   app.configure('production', function() {
+    console.log('setting up for production!');
     app.use(express.errorHandler());
     db.createDBForProduction();
   });

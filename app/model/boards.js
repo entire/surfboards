@@ -4,8 +4,12 @@ module.exports = {
   all: function(callback) {
   	console.log('GET request for /boards');
 		db.collection('boards').find().toArray(function(err, result) {
+			//db.collection('boards').remove({"_id":"52745bc8f40f7eb893000001"}, function(err, result) {callback(err, result)});
 			callback(err, result);
 		});
+				
+
+
   },
   
   find: function(callback) {
