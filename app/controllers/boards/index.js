@@ -79,17 +79,50 @@ module.exports = function(app) {
 	});
 
 	// update board
-	app.put('/boards', function(req, res) {
+	app.put('/boards/:id', function(req, res) {
 
-		boards.update(function(err, results) {
+		if (!req.body.hasOwnProperty('name') || 
+			!req.body.hasOwnProperty('company') ||
+			!req.body.hasOwnProperty('length') ||
+			!req.body.hasOwnProperty('width') ||
+			!req.body.hasOwnProperty('thickness') ||
+			!req.body.hasOwnProperty('volume') ||
+			!req.body.hasOwnProperty('type')) {
+			res.statusCode = 400;
+			return res.send('Error 400: Post syntax incorrect');
+		} else {
 
-		});
+			var updateBoard = {
+				name : req.body.name,
+				company : req.body.company,
+				length: req.body.length,
+				width : req.body.width,
+				thickness : req.body.thickness,
+				volume : req.body.volume,
+				type : req.body.type
+			};
+
+			var id = req.params.id-1;
+			boards.update(id, updateBoard, function(err, results) {
+				if (err) {
+					console.log('there was an error with updating board');
+					throw err;
+				} else {
+					res.send(true);
+					res.statusCode = 200;
+				}
+			});
+		}
+
 	});
 
 	// delete board
 	app.del('/boards/:id', function(req, res) {
 		var id = req.params.id-1;
 		boards.remove(id, function(err, results) {
+			Object.prototype.toString.call(results);
+			console.log(results);
+
 			if (err) {
 				console.log('there was an error with deleting board');
 				throw err;

@@ -27,8 +27,22 @@ module.exports = {
 		});
   },
 
-  update: function(callback) {
+  update: function(id, updatedBoard, callback) {
+  	db.collection('boards').find().toArray(function(err, result) {
+			if (err) {
+				console.log('there was an error with get request for boards!');
+				throw err;
+			} else {
+				var update_name = {name:result[id]["name"]};
+				console.log(updatedBoard);
+				console.log(update_name);
 
+				var boards = db.collection('boards');
+				boards.update(update_name, {$set:updatedBoard}, function(err, result) {
+					callback(err, result);
+				});
+			}
+		});
   },
 
   remove: function(id, callback) {
@@ -37,10 +51,11 @@ module.exports = {
 				console.log('there was an error with get request for boards!');
 				throw err;
 			} else {
-				var delete_name = {name:result[id]["name"]};
-				db.collection('boards').remove(delete_name, function(err, result) {
+
+				// var delete_name = {name:result[id]["name"]};
+				/*db.collection('boards').remove(delete_name, function(err, result) {
 					callback(err, result);	    	
-				});
+				});*/
 			}
 		});
   }
