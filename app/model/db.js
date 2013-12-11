@@ -2,7 +2,9 @@ var mongoskin = require('mongoskin');
 var db;
 
 exports.createDBForProduction = function() {
-	db = mongoskin.db('mongodb://kosvke:rashomon1@ds053438.mongolab.com:53438/boards', {safe:false});
+	// used mongolab.com
+	// replace yyyyyyyyy with username and xxxxxxxxx with password
+	db = mongoskin.db('mongodb://yyyyyyyy:xxxxxxxxxx@ds053438.mongolab.com:53438/boards', {safe:false});
 };
 
 exports.createDBForDevelopment = function() {
