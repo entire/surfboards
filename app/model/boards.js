@@ -7,9 +7,6 @@ module.exports = {
 			//db.collection('boards').remove({"_id":"52745bc8f40f7eb893000001"}, function(err, result) {callback(err, result)});
 			callback(err, result);
 		});
-				
-
-
   },
   
   find: function(callback) {
