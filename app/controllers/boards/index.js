@@ -2,12 +2,12 @@ var boards = require('../../model/boards');
 
 // all boards
 module.exports = function(app) {
-	
+
 	// all boards
 	app.get('/boards', function (req, res) {
     boards.all(function (err, results) {
       if (err) {
-      	console.log('there was an error with getting all boards');
+        console.log('there was an error with getting all boards');
 				throw err;
 			} else {
 				res.json(results);
@@ -41,7 +41,7 @@ module.exports = function(app) {
 					board_type: "surfboard",
 					count: count
 				};
-				
+
 				res.json(boardcount);
 				res.statusCode = 200;
 
@@ -51,7 +51,7 @@ module.exports = function(app) {
 
 	// create board
 	app.post('/boards', function(req, res) {
-		if (!req.body.hasOwnProperty('name') || 
+		if (!req.body.hasOwnProperty('name') ||
 			!req.body.hasOwnProperty('company') ||
 			!req.body.hasOwnProperty('length') ||
 			!req.body.hasOwnProperty('width') ||
@@ -83,7 +83,7 @@ module.exports = function(app) {
 	// update board
 	app.put('/boards/:id', function(req, res) {
 
-		if (!req.body.hasOwnProperty('name') || 
+		if (!req.body.hasOwnProperty('name') ||
 			!req.body.hasOwnProperty('company') ||
 			!req.body.hasOwnProperty('length') ||
 			!req.body.hasOwnProperty('width') ||

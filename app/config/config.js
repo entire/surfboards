@@ -12,7 +12,7 @@ module.exports = function(app, express) {
 
 	app.use(app.router);
 
- 	app.configure('development', function() {
+  app.configure('development', function() {
     console.log('setting up for development!');
     app.use(express.errorHandler({
         dumpExceptions: true,
